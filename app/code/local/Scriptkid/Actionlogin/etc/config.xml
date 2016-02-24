@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Scriptkid_Actionlogin>
+			<version>0.1.0</version>
+		</Scriptkid_Actionlogin>
+	</modules>
+
+	<global>
+		<helpers>
+			<actionlogin>
+				<class>Scriptkid_Actionlogin_Helper</class>
+			</actionlogin>
+			<checkout>
+				<rewrite>
+					<data>Scriptkid_Actionlogin_Helper_Checkout_Data</data>
+				</rewrite>
+			</checkout>
+		</helpers>
+		<blocks>
+			<checkout>
+				<rewrite>
+					<cart>Scriptkid_Actionlogin_Block_Checkout_Cart</cart>
+				</rewrite>
+			</checkout>
+		</blocks>
+		<models>
+			<actionlogin>
+				<class>Scriptkid_Actionlogin_Model</class>
+			</actionlogin>
+		</models>
+		<events>
+			<admin_system_config_changed_section_actionlogin>
+				<observers>
+					<actionlogin>
+						<type>singleton</type>
+						<class>actionlogin/observer</class>
+						<method>logHashedUrl</method>
+					</actionlogin>
+				</observers>
+			</admin_system_config_changed_section_actionlogin>
+		</events>
+  </global>
+  <frontend>
+    <routers>
+      <actionlogin>
+        <use>standard</use>
+        <args>
+          <module>Scriptkid_Actionlogin</module>
+          <frontName>actionlogin</frontName>
+        </args>
+      </actionlogin>
+    </routers>
+    <translate>
+      <modules>
+        <Scriptkid_Actionlogin>
+          <files>
+            <default>Scriptkid_Actionlogin.csv</default>
+          </files>
+        </Scriptkid_Actionlogin>
+      </modules>
+    </translate>
+  </frontend>
+
+</config>
